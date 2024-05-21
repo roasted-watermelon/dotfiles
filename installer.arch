@@ -1,0 +1,4 @@
+install_packages() {
+  #sudo pacman -S --overwrite "*" <package_name>
+  sudo pacman --noconfirm --needed -S "$@"
+}
