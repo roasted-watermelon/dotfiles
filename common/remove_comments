@@ -1,0 +1,7 @@
+source read_input
+
+remove_comments() {
+  local arg="$(read_input "$@")"
+  local string="$(read_file_or_char "$arg")"
+  echo "$string" | sed 's/#.*$//' | grep -v '^$'
+}

@@ -1,0 +1,7 @@
+source read_input
+
+one_liner() {
+  local arg="$(read_input "$@")"
+  local string="$(read_file_or_char "$arg")"
+  echo "$string" | tr '[:space:]' " "
+}

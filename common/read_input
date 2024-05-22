@@ -1,0 +1,16 @@
+read_input() {
+  local arg
+  # https://unix.stackexchange.com/a/301432
+  # https://stackoverflow.com/a/36432966
+  # Read from args or pipe
+  if (( $# == 0 )) ; then
+    arg=${*:-$(</dev/stdin)}
+  else
+    arg="$1"
+  fi
+  if [[ -f "$arg" ]]; then
+    cat "$arg"
+  else
+    echo "$arg"
+  fi
+}
