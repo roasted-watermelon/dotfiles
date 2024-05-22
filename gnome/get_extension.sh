@@ -39,7 +39,9 @@ if [[ ! -f "$ext_file" ]]; then
 fi
 
 echo "Installing..."
-gnome-extensions install "$ext_file"
+gnome-extensions install --force "$ext_file"
+
+echo "$ext_uuid" >> downloaded_extensions
 
 rm -f $extension_html
 rm -f "$ext_file"
