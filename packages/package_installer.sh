@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
-input_packages="$@"
+source <(cat ../common/*)
+
+input_packages="$(read_input "$@")"
 
 ID=`awk -F= '$1=="ID" { print $2 ;}' /etc/os-release | sed -e 's/^"//' -e 's/"$//'`
 ID_LIKE=`awk -F= '$1=="ID_LIKE" { print $2 ;}' /etc/os-release | sed -e 's/^"//' -e 's/"$//'`
@@ -16,7 +18,7 @@ else
 fi
 
 if [[ -z "$input_packages" ]]; then
-  packages=$(tr '[:space:]' ' ' < packages.list)
+  packages=$(remove_comments packages.list | one_liner)
 else
   packages="$input_packages"
 fi

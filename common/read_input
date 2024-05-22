@@ -6,7 +6,7 @@ read_input() {
   if (( $# == 0 )) ; then
     arg=${*:-$(</dev/stdin)}
   else
-    arg="$1"
+    arg="$@"
   fi
   if [[ -f "$arg" ]]; then
     cat "$arg"
