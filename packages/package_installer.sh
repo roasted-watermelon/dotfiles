@@ -2,12 +2,10 @@
 
 source <(cat ../common/*)
 
-input_packages="$(read_input "$@")"
+input_packages="$@"
 
 ID=`awk -F= '$1=="ID" { print $2 ;}' /etc/os-release | sed -e 's/^"//' -e 's/"$//'`
 ID_LIKE=`awk -F= '$1=="ID_LIKE" { print $2 ;}' /etc/os-release | sed -e 's/^"//' -e 's/"$//'`
-
-echo $ID
 
 if [[ "${ID_LIKE,,}" == "arch" || "${ID,,}" == "arch" ]]; then
   echo "Arch linux detected"
