@@ -16,4 +16,3 @@ while read -r line; do
   gnome-extensions enable "$line"
 done <<< "$extensions"
 
-rm -f "$list_file"
