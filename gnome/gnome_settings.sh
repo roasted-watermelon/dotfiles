@@ -73,3 +73,21 @@ set_shortcut -n "Fullscreen screenshot" -c "flameshot full -p /home/${USER}/Pict
 set_shortcut -n "Partial screenshot" -c "flameshot gui -p /home/${USER}/Pictures -c" -b "<Shift>Print"
 
 end_setting_shortcuts
+
+# =============== Application settings ================
+
+namespace="org.gnome.TextEditor"
+
+set_dconf "show-line-numbers" "true"
+
+namespace="org.gnome.Epiphany"
+
+set_dconf "ask-for-default" "false"
+set_dconf "default-search-engine" "Startpage"
+set_dconf "search-engine-providers" "[{\"url\": <\"https://www.startpage.com/search?q=%s\">, \"bang\": <\"!s\">, \"name\": <\"Startpage\">}, {\"url\": <\"https://search.nixos.org/packages?query=%s\">, \"bang\": <\"!np\">, \"name\": <\"Nix Packages\">}, {\"url\": <\"https://search.nixos.org/options?query=%s\">, \"bang\": <\"!no\">, \"name\": <\"Nix Options\">}, {\"url\": <\"https://search.nixos.org/flakes?query=%s\">, \"bang\": <\"!nf\">, \"name\": <\"Nix Flakes\">}]"
+set_dconf "start-in-incognito-mode" "true"
+set_dconf "use-google-search-suggestions" "true"
+
+namespace="org.gnome.Epiphany.web:/org/gnome/epiphany/web/"
+
+set_dconf "remember-passwords" "false"
