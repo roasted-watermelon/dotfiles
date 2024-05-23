@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source .functions.gnome
+
 extension_url="$1"
 extension_html="/tmp/ext-html.html"
 
@@ -16,7 +18,7 @@ ext_uuid=`extract_field "data-uuid"`
 ext_data_svm=`extract_field "data-svm" | sed 's/&quot;/\"/g'`
 
 get_gnome_version() {
-  echo "46"
+  get_gnome_version_major
 }
 
 required_version=`echo "$ext_data_svm" | jq ".[\"$(get_gnome_version)\"].version"`
