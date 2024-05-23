@@ -3,6 +3,8 @@
 source .functions.gnome
 
 extension_url="$1"
+gnome_version="$2"
+uuid_list_file="$3"
 extension_html="/tmp/ext-html.html"
 
 rm -f $extension_html
@@ -17,11 +19,7 @@ extract_field() {
 ext_uuid=`extract_field "data-uuid"`
 ext_data_svm=`extract_field "data-svm" | sed 's/&quot;/\"/g'`
 
-get_gnome_version() {
-  get_gnome_version_major
-}
-
-required_version=`echo "$ext_data_svm" | jq ".[\"$(get_gnome_version)\"].version"`
+required_version=`echo "$ext_data_svm" | jq ".[\"$(echo $gnome_version)\"].version"`
 
 if [[ "$required_version" == "null" ]]; then
   echo "UNAVAILABLE: $ext_uuid"
@@ -43,7 +41,7 @@ fi
 echo "Installing..."
 gnome-extensions install --force "$ext_file"
 
-echo "$ext_uuid" >> .downloaded_extensions
+echo "$ext_uuid" >> "$uuid_list_file"
 
 rm -f $extension_html
 rm -f "$ext_file"
