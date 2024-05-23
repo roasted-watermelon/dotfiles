@@ -9,7 +9,7 @@ ID_LIKE=`awk -F= '$1=="ID_LIKE" { print $2 ;}' /etc/os-release | sed -e 's/^"//'
 
 if [[ "${ID_LIKE,,}" == "arch" || "${ID,,}" == "arch" ]]; then
   echo "Arch linux detected"
-  source installer.arch
+  source .installer.arch
 else
   echo "!!! OS NOT DETECTED in package installer !!!"
   exit

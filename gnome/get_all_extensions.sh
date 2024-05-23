@@ -8,7 +8,7 @@ list_file="downloaded_extensions"
 rm -f "$list_file"
 
 while read -r line; do
-  ./get_extension.sh "$line"
+  ./.get_extension.sh "$line"
 done <<< "$extension_urls"
 
 echo "=========================================================="
