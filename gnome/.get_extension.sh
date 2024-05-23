@@ -43,7 +43,7 @@ fi
 echo "Installing..."
 gnome-extensions install --force "$ext_file"
 
-echo "$ext_uuid" >> downloaded_extensions
+echo "$ext_uuid" >> .downloaded_extensions
 
 rm -f $extension_html
 rm -f "$ext_file"

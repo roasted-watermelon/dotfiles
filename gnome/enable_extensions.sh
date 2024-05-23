@@ -2,7 +2,7 @@
 
 source <(cat ../common/*)
 
-list_file="downloaded_extensions"
+list_file=".downloaded_extensions"
 
 if [[ ! -f "$list_file" ]]; then
   echo "No list found to activate."
