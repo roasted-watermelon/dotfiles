@@ -1,7 +1,14 @@
 set_dconf() {
   local key="$1"
   local value="$2"
-  gsettings set "$namespace" "$1" "$2"
+  gsettings set "$namespace" "$key" "$value"
+}
+
+set_ext_dconf() {
+  # https://github.com/micheleg/dash-to-dock/issues/871#issuecomment-454819437
+  local key="$1"
+  local value="$2"
+  gsettings --schemadir ~/.local/share/gnome-shell/extensions/${extension_uuid}/schemas/ set "$namespace" "$key" "$value"
 }
 
 shortcut_no=-1
