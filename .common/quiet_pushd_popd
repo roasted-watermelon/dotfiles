@@ -1,0 +1,6 @@
+quiet_pushd() {
+    command pushd "$@" > /dev/null
+}
+quiet_popd() {
+    command popd "$@" > /dev/null
+}
