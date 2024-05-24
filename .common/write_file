@@ -1,0 +1,6 @@
+write_file() {
+  contents="$1"
+  filename="/tmp/$(uuidgen)"
+  echo "$contents" > "$filename"
+  echo "$filename"
+}
