@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source <(cat ../common/*)
+source <(cat ../.common/*)
 source .functions.gnome
 
 extension_urls=$(remove_comments gnome_extensions.list)

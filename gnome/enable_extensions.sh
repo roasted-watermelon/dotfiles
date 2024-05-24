@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source <(cat ../common/*)
+source <(cat ../.common/*)
 
 list_file=".downloaded_extensions"
 
