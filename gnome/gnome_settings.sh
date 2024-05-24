@@ -26,6 +26,15 @@ namespace="org.gnome.mutter"
 set_dconf "dynamic-workspaces" false
 set_dconf "edge-tiling" false
 
+namespace="org.gnome.shell"
+
+set_dconf "favorite-apps" "[
+    'org.gnome.Epiphany.desktop',
+    'org.gnome.Console.desktop',
+    'org.gnome.Nautilus.desktop',
+    'org.gnome.TextEditor.desktop'
+]"
+
 namespace="org.gnome.desktop.wm.preferences"
 
 set_dconf "button-layout" ":minimize,maximize,close"
