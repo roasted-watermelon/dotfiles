@@ -4,11 +4,6 @@ namespace=""
 
 source .functions.gnome
 
-# reset everything
-gsettings list-schemas | xargs -n 1 gsettings reset-recursively
-
-sleep 2s
-
 namespace="org.gnome.desktop.peripherals.touchpad"
 
 set_dconf "tap-to-click" true
