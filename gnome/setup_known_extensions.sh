@@ -96,3 +96,8 @@ namespace="org.gnome.shell.extensions.runcat"
 
 set_ext_dconf "displaying-items" "character-only"
 set_ext_dconf "idle-threshold" "5"
+
+extension_uuid="blur-my-shell@aunetx"
+namespace="org.gnome.shell.extensions.blur-my-shell.panel"
+
+set_ext_dconf "blur" "false"
