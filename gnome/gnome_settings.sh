@@ -37,6 +37,10 @@ set_dconf "favorite-apps" "[
     'firefox.desktop'
 ]"
 
+namespace="org.gnome.desktop.sound"
+
+set_dconf "event-sounds" false
+
 namespace="org.gnome.desktop.wm.preferences"
 
 set_dconf "button-layout" ":minimize,maximize,close"
