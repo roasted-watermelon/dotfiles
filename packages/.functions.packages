@@ -1,0 +1,14 @@
+install() {
+  local packages="$(remove_comments $1 | one_liner)"
+  echo "Packages: $packages"
+  install_packages $packages
+}
+
+install_tpa() {
+  local package_definitions="$(remove_comments $1)"
+  while read -r line; do
+    echo
+    echo "Third party package: $line"
+    install_tpa_packages "$line"
+  done <<< "$package_definitions"
+}

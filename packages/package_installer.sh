@@ -1,21 +1,7 @@
 #!/usr/bin/env bash
 
 source <(cat ../.common/*)
-
-input_packages="$@"
-
-install() {
-  echo "Packages: $packages"
-  install_packages $packages
-}
-
-install_tpa() {
-  local package_definitions="$1"
-  while read -r line; do
-    echo "Third party package: $line"
-    install_tpa_packages "$line"
-  done <<< "$package_definitions"
-}
+source .functions.packages
 
 os="$(get_os_type)"
 
@@ -28,20 +14,41 @@ echo "Detected OS type: $os"
 source ".installer.${os}"
 [[ -f ".installer.tpa.${os}" ]] && source ".installer.tpa.${os}"
 
-if [[ -n "$input_packages" ]]; then
-  packages="$input_packages"
-  install
-  exit
+OPTSTRING=":t:n:"
+specified_tpa_file=""
+specified_normal_packages_file=""
+while getopts ${OPTSTRING} opt; do
+  case ${opt} in
+    t)
+      specified_tpa_file="$OPTARG"
+      ;;
+    n)
+      specified_normal_packages_file="$OPTARG"
+      ;;
+  esac
+done
+
+if [[ -n "$specified_tpa_file" ]]; then
+  echo "Installing specified third party pkgs from file: $specified_tpa_file"
+  install_tpa "$specified_tpa_file"
 fi
 
-packages=$(remove_comments packages.list | one_liner)
+if [[ -n "$specified_normal_packages_file" ]]; then
+  echo "Installing normal pkgs from file: $specified_normal_packages_file"
+  install "$specified_normal_packages_file"
+fi
+
+[[ -n "$@" ]] && exit
+
+printf "\nInstalling default pkgs\n"
+install "packages.list"
 
 if [[ -f "packages.${os}.list" ]]; then
-  packages="$packages $(remove_comments packages.${os}.list | one_liner)"
+  printf "\nInstalling OS specific pkgs\n"
+  install "packages.${os}.list"
 fi
 
-install
-
 if [[ -f "packages.${os}.tpa.list" ]]; then
-  install_tpa "$(remove_comments packages.${os}.tpa.list)"
+  printf "\nInstalling OS specific third party pkgs\n"
+  install_tpa "packages.${os}.tpa.list"
 fi

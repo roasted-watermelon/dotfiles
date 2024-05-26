@@ -4,7 +4,6 @@ source <(cat ../.common/*)
 
 quiet_pushd ../packages
 
-packages=$(remove_comments ../gnome/packages.list | one_liner)
-./package_installer.sh "$packages"
+./package_installer.sh -n "../gnome/packages.list"
 
 quiet_popd
