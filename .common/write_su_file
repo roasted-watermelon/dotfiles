@@ -1,0 +1,23 @@
+write_su_file() {
+  local source_path="$1"
+  local append="$2" # yes / no
+  local contents="$3"
+  local dir_path=$(dirname "$source_path")
+  local file_name=$(basename "$source_path")
+  local tmp_file="/tmp/${file_name}"
+  
+  trap "rm -f $tmp_file" EXIT
+
+  sudo cp "$source_path" "$tmp_file"
+  sudo chown "$USER":"$USER" "$tmp_file"
+  
+  if [[ "$append" == "yes" ]]; then
+    echo "$contents" >> "$tmp_file"
+  else
+    echo "$contents" > "$tmp_file"
+  fi
+
+  sudo chown "root":"root" "$tmp_file"
+  sudo mv "$tmp_file" "$source_path"
+
+}
