@@ -30,3 +30,11 @@ else
 fi
 
 create_user_file "~/.config/firefoxprofileswitcher/config.json" "{\"browser_binary\": \"/usr/bin/firefox\"}"
+create_user_file "~/.config/flameshot/flameshot.ini" "
+[General]
+disabledTrayIcon=true
+showStartupLaunchMessage=false
+contrastOpacity=102
+drawColor="#1c71d8"
+showHelp=false
+"
