@@ -5,11 +5,10 @@ install_tpa_packages() {
     echo
     install_packages base-devel git go
     yay_source="/tmp/yay"
-    trap "rm -rf $yay_source" EXIT
+    trap "popd; rm -rf $yay_source" EXIT
     git clone https://aur.archlinux.org/yay.git "$yay_source"
-    quiet_pushd "$yay_source"
+    pushd "$yay_source"
     makepkg --noconfirm -si
-    quiet_popd
     rm -rf "$yay_source"
     echo
     echo "Installed yay: $(yay --version)"
