@@ -1,0 +1,12 @@
+qemu-full
+virt-manager
+virt-viewer
+libvirt
+edk2-ovmf
+vde2
+dnsmasq
+bridge-utils
+openbsd-netcat
+libguestfs
+spice
+spice-vdagent
