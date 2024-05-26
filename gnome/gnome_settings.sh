@@ -33,7 +33,8 @@ set_dconf "favorite-apps" "[
     'org.gnome.Epiphany.desktop',
     'org.gnome.Console.desktop',
     'org.gnome.Nautilus.desktop',
-    'org.gnome.TextEditor.desktop'
+    'org.gnome.TextEditor.desktop',
+    'firefox.desktop'
 ]"
 
 namespace="org.gnome.desktop.wm.preferences"
