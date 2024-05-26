@@ -1,0 +1,19 @@
+install_tpa_packages() {
+  if [[ -z "$(which yay 2>/dev/null)" ]]; then
+    echo
+    echo "Yay is not installed. Installing..."
+    echo
+    install_packages base-devel git go
+    yay_source="/tmp/yay"
+    trap "rm -rf $yay_source" EXIT
+    git clone https://aur.archlinux.org/yay.git "$yay_source"
+    quiet_pushd "$yay_source"
+    makepkg --noconfirm -si
+    quiet_popd
+    rm -rf "$yay_source"
+    echo
+    echo "Installed yay: $(yay --version)"
+    echo
+  fi
+  [[ -n "$(which yay 2>/dev/null)" ]] && yay --noconfirm --needed -S "$@"
+}

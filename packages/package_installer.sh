@@ -9,6 +9,14 @@ install() {
   install_packages $packages
 }
 
+install_tpa() {
+  local package_definitions="$1"
+  while read -r line; do
+    echo "Third party package: $line"
+    install_tpa_packages "$line"
+  done <<< "$package_definitions"
+}
+
 os="$(get_os_type)"
 
 if [[ -z "$os" ]]; then
@@ -18,6 +26,7 @@ fi
 
 echo "Detected OS type: $os"
 source ".installer.${os}"
+[[ -f ".installer.tpa.${os}" ]] && source ".installer.tpa.${os}"
 
 if [[ -n "$input_packages" ]]; then
   packages="$input_packages"
@@ -32,3 +41,7 @@ if [[ -f "packages.${os}.list" ]]; then
 fi
 
 install
+
+if [[ -f "packages.${os}.tpa.list" ]]; then
+  install_tpa "$(remove_comments packages.${os}.tpa.list)"
+fi
