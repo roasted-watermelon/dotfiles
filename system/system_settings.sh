@@ -35,6 +35,6 @@ create_user_file "~/.config/flameshot/flameshot.ini" "
 disabledTrayIcon=true
 showStartupLaunchMessage=false
 contrastOpacity=102
-drawColor="#1c71d8"
+drawColor="#ff0000"
 showHelp=false
 "
