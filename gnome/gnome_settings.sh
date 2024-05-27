@@ -79,8 +79,8 @@ set_shortcut -n "Firefox private" -c "firefox --private-window" -b "<Alt><Super>
 set_shortcut -n "Firefox /e/" -c "firefox -p /e/" -b "<Super><Shift>f"
 set_shortcut -n "Terminal" -c "kgx" -b "<Super>t"
 set_shortcut -n "Gnome web (epiphany)" -c "epiphany" -b "<Super>w"
-set_shortcut -n "Fullscreen screenshot" -c "fixflameshot full -p /home/${USER}/Pictures -c" -b "Print"
-set_shortcut -n "Partial screenshot" -c "fixflameshot gui -p /home/${USER}/Pictures -c" -b "<Shift>Print"
+set_shortcut -n "Fullscreen screenshot" -c "fixflameshot full -p /home/${USER}/Pictures -c" -b "<Alt><Shift>s"
+set_shortcut -n "Partial screenshot" -c "fixflameshot gui -p /home/${USER}/Pictures -c" -b "<Super><Shift>s"
 
 end_setting_shortcuts
 
