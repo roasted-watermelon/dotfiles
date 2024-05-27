@@ -16,6 +16,9 @@ lshw
 libnotify
 smartmontools
 
+# dev tools
+git-lfs
+
 # graphical apps
 
 firefox
