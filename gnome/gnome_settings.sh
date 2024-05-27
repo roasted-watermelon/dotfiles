@@ -47,10 +47,10 @@ namespace="org.gnome.desktop.wm.preferences"
 set_dconf "button-layout" ":minimize,maximize,close"
 set_dconf "num-workspaces" 4
 
-#namespace="org.gnome.gnome-session"
-#
-#set_dconf "logout-prompt" false
-#
+namespace="org.gnome.SessionManager"
+
+set_dconf "logout-prompt" false
+
 
 # =============== Key bindings ===============
 
