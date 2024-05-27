@@ -1,5 +1,7 @@
 vim
 less
+curl
+wget
 jq
 git
 tree
