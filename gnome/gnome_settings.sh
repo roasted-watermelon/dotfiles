@@ -99,7 +99,8 @@ set_dconf "search-engine-providers" "[
     {\"url\": <\"https://www.startpage.com/search?q=%s\">, \"bang\": <\"!s\">, \"name\": <\"Startpage\">}, 
     {\"url\": <\"https://search.nixos.org/packages?query=%s\">, \"bang\": <\"!np\">, \"name\": <\"Nix Packages\">}, 
     {\"url\": <\"https://search.nixos.org/options?query=%s\">, \"bang\": <\"!no\">, \"name\": <\"Nix Options\">}, 
-    {\"url\": <\"https://search.nixos.org/flakes?query=%s\">, \"bang\": <\"!nf\">, \"name\": <\"Nix Flakes\">}
+    {\"url\": <\"https://search.nixos.org/flakes?query=%s\">, \"bang\": <\"!nf\">, \"name\": <\"Nix Flakes\">},
+    {\"url\": <\"https://aur.archlinux.org/packages?K=%s\">, \"bang\": <\"!ap\">, \"name\": <\"AUR packages\">}
 ]"
 set_dconf "start-in-incognito-mode" "true"
 set_dconf "use-google-search-suggestions" "true"
