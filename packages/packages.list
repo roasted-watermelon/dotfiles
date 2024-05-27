@@ -5,7 +5,6 @@ git
 tree
 dmidecode
 usbutils
-fuse
 exfatprogs
 p7zip
 unrar
