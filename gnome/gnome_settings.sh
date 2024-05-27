@@ -36,6 +36,7 @@ set_dconf "favorite-apps" "[
     'org.gnome.TextEditor.desktop',
     'firefox.desktop'
 ]"
+set_dconf "disable-user-extensions" false
 
 namespace="org.gnome.desktop.sound"
 
