@@ -1,6 +1,5 @@
-libnotify
+libnotify-bin
 gnome-themes-extra
-linux-lts
 papirus-icon-theme
-epiphany
+epiphany-browser
 

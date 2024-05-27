@@ -1,6 +1,7 @@
 get_os_type() {
   local defined_oses=(
     "arch"
+    "debian"
   )
 
   local ID=`awk -F= '$1=="ID" { print $2 ;}' /etc/os-release | sed -e 's/^"//' -e 's/"$//'`

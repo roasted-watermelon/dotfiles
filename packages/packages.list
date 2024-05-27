@@ -13,7 +13,6 @@ stress
 pv
 pciutils
 lshw
-libnotify
 smartmontools
 
 # dev tools
@@ -24,7 +23,6 @@ git-lfs
 firefox
 qbittorrent
 flameshot
-epiphany
 meld
 dconf-editor
 gsmartcontrol
