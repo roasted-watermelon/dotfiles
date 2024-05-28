@@ -17,6 +17,7 @@ set_dconf "icon-theme" "Papirus-Dark"
 set_dconf "enable-hot-corners" false
 set_dconf "clock-show-seconds" true
 set_dconf "clock-show-weekday" true
+set_dconf "toolkit-accessibility" true
 
 namespace="org.gnome.desktop.calendar"
 
