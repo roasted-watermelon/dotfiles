@@ -1,0 +1,49 @@
+# Requires sourcing "get_arguments"
+# Example usage:
+#   write_to_file "~/file.txt" "my file contents ha ha ha" append=true use_sudo=false
+# By default - use_sudo=false; append=true; backup_original=true
+write_to_file() {
+  
+  declare -A arg_array
+
+  eval local file_location="$1"
+  local contents="$2"
+  local append
+  local use_sudo
+  local backup_original
+  get_arguments "$@"
+  append="${arg_array[append]:-"true"}"
+  use_sudo="${arg_array[use_sudo]:-"false"}"
+  backup_original="${arg_array[backup_original]:-"true"}" # take default value of true
+  eval local dir_path=$(dirname "$file_location")
+  local file_name=$(basename "$file_location")
+
+  local tmp_file="/tmp/$(uuidgen)"
+
+  local sudo_cmd=""
+  if [[ $use_sudo == "true" ]]; then
+    sudo_cmd="sudo"
+  fi
+
+  trap "$sudo_cmd rm -f $tmp_file" EXIT
+
+  if [[ "$append" == "true" ]]; then
+    [[ -f "$file_location" ]] && cat "$file_location" > "$tmp_file"
+    echo "$contents" >> "$tmp_file"
+  else
+    if [[ "$backup_original" == "true" && -f "$file_location" ]]; then
+      $sudo_cmd cp "$file_location" "${file_location}.bak"
+    fi
+    echo "$contents" > "$tmp_file"
+  fi
+
+  if [[ -f "$file_location" ]]; then
+    local owner_user=`stat -c '%U' "$file_location"`
+    local owner_group=`stat -c '%G' "$file_location"`
+    $sudo_cmd chown "$owner_user":"$owner_group" "$tmp_file"
+  fi
+
+  $sudo_cmd mkdir -p "$dir_path"
+  $sudo_cmd mv "$tmp_file" "$file_location"
+
+}
