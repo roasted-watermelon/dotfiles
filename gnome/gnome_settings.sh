@@ -80,10 +80,16 @@ set_dconf "calculator" "['<Super>c']"
 set_shortcut -n "Firefox" -c "firefox" -b "<Super>f"
 set_shortcut -n "Firefox private" -c "firefox --private-window" -b "<Alt><Super>f"
 set_shortcut -n "Firefox /e/" -c "firefox -p /e/" -b "<Super><Shift>f"
-set_shortcut -n "Terminal" -c "kgx" -b "<Super>t"
 set_shortcut -n "Gnome web (epiphany)" -c "epiphany" -b "<Super>w"
 set_shortcut -n "Fullscreen screenshot" -c "fixflameshot full -p /home/${USER}/Pictures -c" -b "<Alt><Shift>s"
 set_shortcut -n "Partial screenshot" -c "fixflameshot gui -p /home/${USER}/Pictures -c" -b "<Super><Shift>s"
+
+if [[ -n "$(gsettings get org.gnome.settings-daemon.plugins.media-keys terminal 2> /dev/null)" ]]; then
+  namespace="org.gnome.settings-daemon.plugins.media-keys"
+  set_dconf "terminal" "['<Super>t']"
+else
+  set_shortcut -n "Terminal" -c "kgx" -b "<Super>t"
+fi
 
 end_setting_shortcuts
 
