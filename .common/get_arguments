@@ -1,0 +1,16 @@
+# Run from inside a script that has defined an array as below:
+# declare -A arg_array
+# Access the elements as: ${arg_array[key]}
+# Pass a string like "$@" having options defined as "options1=val1 option2=val2"
+get_arguments() {
+  for arg in "$@"; do
+    case $arg in
+      *=*)
+        local key="${arg%%=*}"
+        local value="${arg#*=}"
+        arg_array["$key"]="$value"
+        shift
+        ;;
+    esac
+  done
+}
