@@ -11,16 +11,14 @@ script_dir="/usr/local/bin"
 create_script() {
   local file_name="$1"
   local contents="$2"
-  local tmp_file="$(write_file "$contents")"
-  chmod +x "$tmp_file"
-  sudo mv "$tmp_file" "${script_dir}/${file_name}"
+  write_to_file "${script_dir}/${file_name}" "$contents" append=false use_sudo=true backup_original=false
+  sudo chmod +x "${script_dir}/${file_name}"
 }
 
 create_user_file() {
   local file_path="$1"
   local contents="$2"
-  local tmp_file="$(write_file "$contents")"
-  eval mv "$tmp_file" "$file_path" # eval is used to process ~ (home)
+  write_to_file "${file_path}" "$contents" append=false use_sudo=false backup_original=false
 }
 
 if [[ -n "$(echo $WAYLAND_DISPLAY)" ]]; then
