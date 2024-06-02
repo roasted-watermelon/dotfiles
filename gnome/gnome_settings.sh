@@ -58,7 +58,7 @@ set_dconf "logout-prompt" false
 namespace="org.gnome.desktop.wm.keybindings"
 
 set_dconf "switch-group" "['<Super>Tab']"
-set_dconf "switch-applications" "[]"
+set_dconf "switch-applications" "['<Super>Grave']"
 set_dconf "switch-windows" "['<Alt>Tab']"
 set_dconf "close" "['<Shift><Alt>q']"
 
@@ -72,6 +72,7 @@ set_dconf "toggle-message-tray" "['<Super>n']"
 namespace="org.gnome.settings-daemon.plugins.media-keys"
       
 set_dconf "home" "['<Super>e']"
+set_dconf "logout" "[]"
 set_dconf "calculator" "['<Super>c']"
 
 # =============== Custom shortcuts ===============
