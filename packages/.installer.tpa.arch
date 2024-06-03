@@ -14,5 +14,15 @@ install_tpa_packages() {
     echo "Installed yay: $(yay --version)"
     echo
   fi
-  [[ -n "$(which yay 2>/dev/null)" ]] && yay --noconfirm --needed -S "$@"
+  wordcount="$(echo "$@" | wc -w)"
+  if [[ "$wordcount" == "1" ]]; then
+    [[ -n "$(which yay 2>/dev/null)" ]] && yay --noconfirm --needed -S "$@"
+  else
+    local packageName="$(echo "$@" | awk '{print $1}')"
+    local packageUrl="$(echo "$@" | awk '{print $2}')"
+    local zst_file="/tmp/${packageName}.pkg.tar.zst"
+    trap "rm -f $zst_file" EXIT
+    wget -O "$zst_file" "$packageUrl"
+    sudo pacman -U --noconfirm --needed "$zst_file"
+  fi
 }
