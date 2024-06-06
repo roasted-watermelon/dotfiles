@@ -14,9 +14,12 @@ echo "Detected OS type: $os"
 source ".installer.${os}"
 [[ -f ".installer.tpa.${os}" ]] && source ".installer.tpa.${os}"
 
-OPTSTRING=":t:n:"
+source ".installer.flatpak"
+
+OPTSTRING=":t:n:f:"
 specified_tpa_file=""
 specified_normal_packages_file=""
+specified_flatpak_packages_file=""
 while getopts ${OPTSTRING} opt; do
   case ${opt} in
     t)
@@ -25,17 +28,25 @@ while getopts ${OPTSTRING} opt; do
     n)
       specified_normal_packages_file="$OPTARG"
       ;;
+    f)
+      specified_flatpak_packages_file="$OPTARG"
+      ;;
   esac
 done
+
+if [[ -n "$specified_normal_packages_file" ]]; then
+  echo "Installing normal pkgs from file: $specified_normal_packages_file"
+  install "$specified_normal_packages_file"
+fi
 
 if [[ -n "$specified_tpa_file" ]]; then
   echo "Installing specified third party pkgs from file: $specified_tpa_file"
   install_tpa "$specified_tpa_file"
 fi
 
-if [[ -n "$specified_normal_packages_file" ]]; then
-  echo "Installing normal pkgs from file: $specified_normal_packages_file"
-  install "$specified_normal_packages_file"
+if [[ -n "$specified_flatpak_packages_file" ]]; then
+  echo "Installing Flatpaks from file: $specified_flatpak_packages_file"
+  install_flatpaks "$specified_flatpak_packages_file"
 fi
 
 [[ -n "$@" ]] && exit
@@ -51,4 +62,9 @@ fi
 if [[ -f "packages.${os}.tpa.list" ]]; then
   printf "\nInstalling OS specific third party pkgs\n"
   install_tpa "packages.${os}.tpa.list"
+fi
+
+if [[ -f "packages.flatpak.list" ]]; then
+  printf "\nInstalling flatpak apps\n"
+  install_flatpaks "packages.flatpak.list"
 fi

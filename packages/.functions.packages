@@ -12,3 +12,9 @@ install_tpa() {
     install_tpa_packages "$line"
   done <<< "$package_definitions"
 }
+
+install_flatpaks() {
+  local packages="$(remove_comments $1 | one_liner)"
+  echo "Packages: $packages"
+  install_flatpak_packages $packages
+}
