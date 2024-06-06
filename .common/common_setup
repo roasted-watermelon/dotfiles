@@ -19,4 +19,8 @@ common_setup() {
   if [[ -f "../$packages_list_path/packages.${os}.tpa.list" ]]; then
     ./package_installer.sh -t "../$packages_list_path/packages.${os}.tpa.list"
   fi
+
+  if [[ -f "../$packages_list_path/packages.flatpak.list" ]]; then
+    ./package_installer.sh -f "../$packages_list_path/packages.flatpak.list"
+  fi
 }
