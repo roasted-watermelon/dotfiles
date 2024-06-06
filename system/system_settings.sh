@@ -6,15 +6,6 @@ source <(cat ../.common/*)
 sudo systemctl enable bluetooth
 sudo systemctl start bluetooth
 
-script_dir="/usr/local/bin"
-
-create_script() {
-  local file_name="$1"
-  local contents="$2"
-  write_to_file "${script_dir}/${file_name}" "$contents" append=false use_sudo=true backup_original=false
-  sudo chmod +x "${script_dir}/${file_name}"
-}
-
 create_user_file() {
   local file_path="$1"
   local contents="$2"
