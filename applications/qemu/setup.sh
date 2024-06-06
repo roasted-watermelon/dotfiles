@@ -19,10 +19,9 @@
 # More on share directory:
 # https://www.debugpoint.com/share-folder-virt-manager/
 
-cd ..
-./.common_setup.sh "qemu"
+source <(cat ../../.common/*)
 
-source <(cat ../.common/*)
+common_setup "../../packages" "applications/qemu"
 
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service

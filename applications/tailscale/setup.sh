@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-cd ..
-./.common_setup.sh "tailscale"
+source <(cat ../../.common/*)
+
+common_setup "../../packages" "applications/tailscale"
 
 sudo systemctl enable --now tailscaled
 

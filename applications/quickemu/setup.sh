@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-cd ..
-./.common_setup.sh "quickemu"
+source <(cat ../../.common/*)
+
+common_setup "../../packages" "applications/quickemu"

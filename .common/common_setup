@@ -1,0 +1,22 @@
+common_setup() {
+  package_installer_directory="$1"      # from the calling script.   Eg - "../../packages"
+  packages_list_path="$2"               # from the root of dotfiles. Eg - "applications/qemu"
+
+  os="$(get_os_type)"
+
+  [[ -z "$os" ]] && exit
+
+  cd "$package_installer_directory"
+
+  if [[ -f "../$packages_list_path/packages.list" ]]; then
+    ./package_installer.sh -n "../$packages_list_path/packages.list"
+  fi
+
+  if [[ -f "../$packages_list_path/packages.${os}.list" ]]; then
+    ./package_installer.sh -n "../$packages_list_path/packages.${os}.list"
+  fi
+
+  if [[ -f "../$packages_list_path/packages.${os}.tpa.list" ]]; then
+    ./package_installer.sh -t "../$packages_list_path/packages.${os}.tpa.list"
+  fi
+}
