@@ -1,0 +1,5 @@
+set_env_var() {
+  local varName="$1"
+  local varValue="$2"
+  write_to_file "/etc/environment" "$varName=$varValue" append=true use_sudo=true
+}
