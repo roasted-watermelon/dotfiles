@@ -64,12 +64,12 @@ if [[ -f "packages.${os}.tpa.list" ]]; then
   install_tpa "packages.${os}.tpa.list"
 fi
 
-if [[ -f "packages.flatpak.list" ]]; then
-  printf "\nInstalling flatpak apps\n"
-  install_flatpaks "packages.flatpak.list"
-fi
-
 # Install atuin
 if [[ "$os" == "debian" ]]; then
   bash <(curl --proto '=https' --tlsv1.2 -sSf https://setup.atuin.sh)
+fi
+
+if [[ -f "packages.flatpak.list" ]]; then
+  printf "\nInstalling flatpak apps\n"
+  install_flatpaks "packages.flatpak.list"
 fi
