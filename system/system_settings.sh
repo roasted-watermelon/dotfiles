@@ -35,4 +35,16 @@ if [[ -n "$(which atuin 2>/dev/null)" ]]; then
   curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
   echo '[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh' >> ~/.bashrc
   echo 'eval "$(atuin init bash)"' >> ~/.bashrc
+
+  create_user_file "~/.config/atuin/config.toml" "
+search_mode = \"fuzzy\"
+enter_accept = true
+show_preview = true
+[stats]
+
+[keys]
+
+[sync]
+records = true
+"
 fi
