@@ -40,6 +40,7 @@ if [[ -n "$(which atuin 2>/dev/null)" ]]; then
 search_mode = \"fuzzy\"
 enter_accept = true
 show_preview = true
+max_preview_height = 10
 [stats]
 
 [keys]
