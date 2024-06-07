@@ -32,5 +32,7 @@ set_env_var "EDITOR" "vim"
 
 if [[ -n "$(which atuin 2>/dev/null)" ]]; then
   atuin import bash
-  echo 'eval "$(atuin init bash)"' >> $HOME/.bashrc
+  curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/.bash-preexec.sh
+  echo '[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh' >> ~/.bashrc
+  echo 'eval "$(atuin init bash)"' >> ~/.bashrc
 fi
