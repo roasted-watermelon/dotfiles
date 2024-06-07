@@ -27,3 +27,5 @@ contrastOpacity=102
 drawColor="#ff0000"
 showHelp=false
 "
+
+write_to_file "/etc/environment" "EDITOR=vim" append=true use_sudo=true
