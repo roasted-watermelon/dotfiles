@@ -88,3 +88,42 @@ esac
 
 "
 
+create_script "temp-limit-toggle" "
+
+#!/usr/bin/env bash
+
+# Arguments: blank (simple toggle), \"limited\", \"not-limited\"
+
+user_input=\"\$1\"
+is_quiet=\"\$2\"
+
+last_state_file=/tmp/last_temperature_state
+last_state=\"\$(cat \$last_state_file 2> /dev/null)\"
+last_state=\"\${last_state:-\"not-limited\"}\"
+
+new_state=\"\"
+
+if [[ \"\$user_input\" == \"maintain\" ]]; then
+  new_state=\"\$last_state\"
+elif [[ -n \"\$user_input\" ]]; then
+  new_state=\"\$user_input\"
+elif [[ \"\$last_state\" == \"not-limited\" ]]; then
+  new_state=\"limited\"
+else
+  new_state=\"not-limited\"
+fi
+
+if [[ \"\$new_state\" == \"limited\" ]]; then
+  sudo ryzenadj --tctl-temp=65
+  echo \"Limited temperature\"
+  [[ -z \$is_quiet ]] && notify-send -a \"Temp. limit toggle\" \"Limited temperature\"
+else
+  fan-speed-toggle maintain quiet
+  echo \"Temperature limits lifted (if any)\"
+  [[ -z \$is_quiet ]] && notify-send -a \"Temp. limit toggle\" \"Temperature limits lifted.\"
+fi
+
+echo \"\$new_state\" > \$last_state_file
+
+"
+
