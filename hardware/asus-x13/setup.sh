@@ -34,12 +34,12 @@ fans_default() {
 
 mode_to_set=\"\$1\"
 
+max_beginning=\`asusctl fan-curve -g | head -n 1 | awk -F',' '{print \$2}' | grep \":100%\"\`
+zero_ending=\`asusctl fan-curve -g | head -n 1 | awk -F',' '{print \$NF}' | grep \":0%\"\`
+
 # If no specific mode is provided by the user
 # Set it to toggle between default and max
 if [[ -z \"\$mode_to_set\" ]]; then
-
-  max_beginning=\`asusctl fan-curve -g | head -n 1 | awk -F',' '{print \$2}' | grep \":100%\"\`
-  zero_ending=\`asusctl fan-curve -g | head -n 1 | awk -F',' '{print \$NF}' | grep \":0%\"\`
  
   if [[ -n \$max_beginning ]]; then
 
@@ -73,6 +73,15 @@ case \$mode_to_set in
     ;;
   zero)
     fans_zero
+    ;;
+  maintain)
+    if [[ -n \$max_beginning ]]; then
+      fans_max
+    elif [[ -n \$zero_ending ]];then
+      fans_zero
+    else
+      fans_default
+    fi
     ;;
 esac
 
