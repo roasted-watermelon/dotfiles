@@ -102,9 +102,10 @@ set_dconf "show-line-numbers" "true"
 namespace="org.gnome.Epiphany"
 
 set_dconf "ask-for-default" "false"
-set_dconf "default-search-engine" "Startpage"
+set_dconf "default-search-engine" "Ecosia"
 set_dconf "search-engine-providers" "[
     {\"url\": <\"https://www.startpage.com/search?q=%s\">, \"bang\": <\"!s\">, \"name\": <\"Startpage\">}, 
+    {\"url\": <\"https://www.ecosia.org/search?q=%s\">, \"bang\": <\"!e\">, \"name\": <\"Ecosia\">}, 
     {\"url\": <\"https://search.nixos.org/packages?query=%s\">, \"bang\": <\"!np\">, \"name\": <\"Nix Packages\">}, 
     {\"url\": <\"https://search.nixos.org/options?query=%s\">, \"bang\": <\"!no\">, \"name\": <\"Nix Options\">}, 
     {\"url\": <\"https://search.nixos.org/flakes?query=%s\">, \"bang\": <\"!nf\">, \"name\": <\"Nix Flakes\">},
