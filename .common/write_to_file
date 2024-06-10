@@ -41,6 +41,8 @@ write_to_file() {
     local owner_user=`stat -c '%U' "$file_location"`
     local owner_group=`stat -c '%G' "$file_location"`
     $sudo_cmd chown "$owner_user":"$owner_group" "$tmp_file"
+  elif [[ -n $sudo_cmd ]]; then
+    $sudo_cmd chown "root":"root" "$tmp_file"
   fi
 
   $sudo_cmd mkdir -p "$dir_path"
