@@ -127,3 +127,25 @@ echo \"\$new_state\" > \$last_state_file
 
 "
 
+create_script "fan-speed-toggle-maintain-temp" "
+
+#!/usr/bin/env bash
+
+fan-speed-toggle \$@
+sleep 1
+temp-limit-toggle maintain quiet
+
+"
+
+ryzenadj_path=`which ryzenadj`
+
+# make a sudoers entry to allow running ryzenadj without root
+sudoers_content="
+${USER} ALL=(root) NOPASSWD: ${ryzenadj_path}
+"
+
+sudoers_file="/etc/sudoers.d/asus_x13"
+
+write_to_file "$sudoers_file" "$sudoers_content" append=false use_sudo=true backup_original=false
+sudo chmod 440 $sudoers_file
+
