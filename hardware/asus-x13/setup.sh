@@ -122,6 +122,10 @@ fi
 echo \"\$new_state\" > \$last_state_file
 [[ \"\$(whoami)\" == "root" ]] && chmod 666 \$last_state_file
 
+log_file=/tmp/temp-toogle-log
+echo \"\$(date) - \$(whoami) - \$@\" - \$new_state >> \$log_file
+[[ \"\$(whoami)\" == "root" ]] && chmod 666 \$log_file
+
 "
 
 create_script "fan-speed-toggle-maintain-temp" "
