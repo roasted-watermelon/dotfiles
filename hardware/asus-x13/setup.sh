@@ -4,9 +4,7 @@ source <(cat ../../.common/*)
 
 common_setup "../../packages" "hardware/asus-x13"
 
-create_script "fan-speed-toggle" "
-
-#!/usr/bin/env bash
+create_script "fan-speed-toggle" "#!/usr/bin/env bash
 
 current_profile=\$(asusctl profile -p | awk '{print \$NF}')
 
@@ -88,9 +86,7 @@ esac
 
 "
 
-create_script "temp-limit-toggle" "
-
-#!/usr/bin/env bash
+create_script "temp-limit-toggle" "#!/usr/bin/env bash
 
 # Arguments: blank (simple toggle), \"limited\", \"not-limited\"
 
@@ -124,6 +120,7 @@ else
 fi
 
 echo \"\$new_state\" > \$last_state_file
+[[ \"\$(whoami)\" == "root" ]] && chmod 666 \$last_state_file
 
 "
 
@@ -149,3 +146,67 @@ sudoers_file="/etc/sudoers.d/asus_x13"
 write_to_file "$sudoers_file" "$sudoers_content" append=false use_sudo=true backup_original=false
 sudo chmod 440 $sudoers_file
 
+# Setup systemd timers
+# Check: sudo systemctl status <name>.timer
+# Check: sudo journalctl -u <name>.service
+
+service_file_content="
+[Unit]
+Description=Run temp-limit-toggle
+
+[Service]
+ExecStart=$(which temp-limit-toggle) maintain quiet
+"
+
+service_file_name="temp-limit.service"
+service_file_location="/etc/systemd/system/$service_file_name"
+
+service_at_boot_content="
+[Unit]
+Description=Limit temp. at boot
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=$(which temp-limit-toggle) limited quiet
+RemainAfterExit=false
+
+[Install]
+WantedBy=multi-user.target
+"
+
+service_at_boot_name="temp-limit-at-boot.service"
+service_at_boot_location="/etc/systemd/system/$service_at_boot_name"
+
+timer_file_content="
+[Unit]
+Description=Run temp-limit-toggle every minute
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+Unit=$service_file_name
+
+[Install]
+WantedBy=timers.target
+"
+
+timer_file_name="temp-limit.timer"
+timer_file_location="/etc/systemd/system/$timer_file_name"
+
+write_to_file "$service_file_location" "$service_file_content" append=false use_sudo=true backup_original=false
+sudo chmod +x "$service_file_location"
+write_to_file "$service_at_boot_location" "$service_at_boot_content" append=false use_sudo=true backup_original=false
+sudo chmod +x "$service_at_boot_location"
+write_to_file "$timer_file_location" "$timer_file_content" append=false use_sudo=true backup_original=false
+sudo chmod +x "$timer_file_location"
+
+sudo systemctl daemon-reload
+sudo systemctl enable $service_at_boot_name
+sudo systemctl enable $timer_file_name
+# DO NOT ENABLE the standalone service file, which is being called by the timer.
+#sudo systemctl disable $service_file_name
+
+echo "=========================================================="
+echo "                     Kindly reboot                        "
+echo "=========================================================="
