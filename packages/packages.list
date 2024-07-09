@@ -15,6 +15,7 @@ pv
 pciutils
 lshw
 smartmontools
+gthumb
 
 # graphical apps
 

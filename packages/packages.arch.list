@@ -10,6 +10,8 @@ noto-fonts-emoji
 noto-fonts-extra
 file-roller
 
+perl-image-exiftool
+
 # terminal apps
 
 atuin
