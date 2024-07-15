@@ -1,0 +1,43 @@
+(defcfg
+  input  (device-file "/dev/input/by-id/usb-ASUSTeK_Computer_Inc._N-KEY_Device-if02-event-kbd")
+  output (uinput-sink "Asus X13 kbd output")
+
+  fallthrough true
+  allow-cmd true
+)
+
+
+;; keycodes: './src/KMonad/Keyboard/Keycode.hs'
+
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft             KeyUp
+  lctl lmet lalt           spc            ralt  rctl               lft   KeyDown   rght
+)
+
+(defalias
+  en (layer-toggle easyNav)
+  kh KeyHome
+  ke KeyEnd
+  kbt (tap-hold-next-release 400 spc KeyKbdIllumToggle)
+)
+
+(deflayer default
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft             KeyUp
+  lctl lmet lalt           @kbt           @en  rctl               lft   KeyDown   rght
+)
+
+(deflayer easyNav
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    @kh  @ke    \
+  a    a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft            pgup
+  lctl lmet lalt           spc            ralt rctl               @kh    pgdn    @ke
+)
+

@@ -1,0 +1,9 @@
+[Unit]
+Description=KMonad service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/kmonad /etc/kmonad/config.kbd
+
+[Install]
+WantedBy=default.target
