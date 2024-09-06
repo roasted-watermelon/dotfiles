@@ -6,7 +6,11 @@ common_setup "../../packages" "hardware/asus-x13"
 
 create_script "fan-speed-toggle" "#!/usr/bin/env bash
 
-current_profile=\$(asusctl profile -p | awk '{print \$NF}')
+# Usage 1: fan-speed-toggle
+# Usage 2: fan-speed-toggle <max|default|zero>
+# Usage 3 (no notification): fan-speed-toggle <max|default|zero> true
+
+current_profile=\$(asusctl profile -p | tail -n 1 | awk '{print \$NF}')
 
 mode_to_set=\"\$1\"
 is_quiet=\"\$2\"
@@ -33,8 +37,8 @@ fans_default() {
   [[ -z \$is_quiet ]] && notify-send -a \"Fan toggle\" \"Fans default speed\"
 }
 
-max_beginning=\`asusctl fan-curve -g | head -n 1 | awk -F',' '{print \$2}' | grep \":100%\"\`
-zero_ending=\`asusctl fan-curve -g | head -n 1 | awk -F',' '{print \$NF}' | grep \":0%\"\`
+max_beginning=\`asusctl fan-curve -g > /tmp/faninfo && sed -n '2p' /tmp/faninfo | awk -F',' '{print \$2}' | grep \":100%\"\`
+zero_ending=\`asusctl fan-curve -g > /tmp/faninfo && sed -n '2p' /tmp/faninfo | awk -F',' '{print \$NF}' | grep \":0%\"\`
 
 # If no specific mode is provided by the user
 # Set it to toggle between default and max
