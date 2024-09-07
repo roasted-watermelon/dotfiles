@@ -15,4 +15,8 @@ get_os_type() {
       break
     fi
   done
+
+  if [[ "${ID_LIKE,,}" == "rhel centos fedora" ]]; then
+    echo "rhel"
+  fi
 }
