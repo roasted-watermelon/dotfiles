@@ -101,3 +101,8 @@ extension_uuid="blur-my-shell@aunetx"
 namespace="org.gnome.shell.extensions.blur-my-shell.panel"
 
 set_ext_dconf "blur" "false"
+
+extension_uuid="status-area-horizontal-spacing@mathematical.coffee.gmail.com"
+namespace="org.gnome.shell.extensions.status-area-horizontal-spacing"
+
+set_ext_dconf "hpadding" "4"
