@@ -91,11 +91,11 @@ set_ext_dconf "show-activities-button" "true"
 set_ext_dconf "show-power-options" "false"
 set_ext_dconf "symbolic-icon" "false"
 
-extension_uuid="runcat@kolesnikov.se"
-namespace="org.gnome.shell.extensions.runcat"
-
-set_ext_dconf "displaying-items" "character-only"
-set_ext_dconf "idle-threshold" "5"
+#extension_uuid="runcat@kolesnikov.se"
+#namespace="org.gnome.shell.extensions.runcat"
+#
+#set_ext_dconf "displaying-items" "character-only"
+#set_ext_dconf "idle-threshold" "5"
 
 extension_uuid="blur-my-shell@aunetx"
 namespace="org.gnome.shell.extensions.blur-my-shell.panel"
