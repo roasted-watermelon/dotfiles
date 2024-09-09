@@ -3,8 +3,10 @@
 source <(cat ../../.common/*)
 
 download_url=`curl -s https://api.github.com/repos/kmonad/kmonad/releases/latest | grep browser_download_url | awk '{print $2}' | sed 's/"//g'`
-wget $download_url -O /tmp/kmonad
-sudo mv /tmp/kmonad /usr/bin/kmonad
+tmp="/tmp/kmonad"
+wget $download_url -O $tmp
+chmod +x $tmp
+sudo mv $tmp /usr/bin/kmonad
 
 sudo mkdir -p /etc/kmonad
 sudo cp asus-x13.kbd /etc/kmonad/config.kbd
