@@ -106,3 +106,8 @@ extension_uuid="status-area-horizontal-spacing@mathematical.coffee.gmail.com"
 namespace="org.gnome.shell.extensions.status-area-horizontal-spacing"
 
 set_ext_dconf "hpadding" "4"
+
+extension_uuid="lilypad@shendrew.github.io"
+namespace="org.gnome.shell.extensions.lilypad"
+
+set_ext_dconf "lilypad-order" "['Clipboard_History_Indicator', 'emoji_copy']"
