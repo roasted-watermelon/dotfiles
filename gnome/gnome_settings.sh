@@ -88,7 +88,7 @@ if [[ -n "$(gsettings get org.gnome.settings-daemon.plugins.media-keys terminal 
   namespace="org.gnome.settings-daemon.plugins.media-keys"
   set_dconf "terminal" "['<Super>t']"
 else
-  set_shortcut -n "Terminal" -c "kgx" -b "<Super>t"
+  set_shortcut -n "Terminal" -c "gnome-terminal" -b "<Super>t"
 fi
 
 end_setting_shortcuts
