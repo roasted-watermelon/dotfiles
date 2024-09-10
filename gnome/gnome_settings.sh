@@ -31,7 +31,6 @@ set_dconf "edge-tiling" false
 namespace="org.gnome.shell"
 
 set_dconf "favorite-apps" "[
-    'org.gnome.Epiphany.desktop',
     'org.gnome.Console.desktop',
     'org.gnome.Nautilus.desktop',
     'org.gnome.TextEditor.desktop',
@@ -80,7 +79,6 @@ set_dconf "calculator" "['<Super>c']"
 set_shortcut -n "Firefox" -c "firefox" -b "<Super>f"
 set_shortcut -n "Firefox private" -c "firefox --private-window" -b "<Alt><Super>f"
 set_shortcut -n "Firefox /e/" -c "firefox -p /e/" -b "<Super><Shift>f"
-set_shortcut -n "Gnome web (epiphany)" -c "epiphany" -b "<Super>w"
 set_shortcut -n "Fullscreen screenshot" -c "fixflameshot full -p /home/${USER}/Pictures -c" -b "<Alt><Shift>s"
 set_shortcut -n "Partial screenshot" -c "fixflameshot gui -p /home/${USER}/Pictures -c" -b "<Super><Shift>s"
 
