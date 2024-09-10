@@ -55,7 +55,7 @@ set_ext_dconf "show-apps-button" "true"
 set_ext_dconf "weather" "false"
 set_ext_dconf "window-demands-attention-focus" "true"
 set_ext_dconf "world-clock" "false"
-set_ext_dconf "startup-status" "0"
+set_ext_dconf "startup-status" "1"
 
 extension_uuid="ding@rastersoft.com"
 namespace="org.gnome.shell.extensions.ding"
