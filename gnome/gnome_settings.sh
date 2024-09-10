@@ -31,7 +31,7 @@ set_dconf "edge-tiling" false
 namespace="org.gnome.shell"
 
 set_dconf "favorite-apps" "[
-    'org.gnome.Console.desktop',
+    'org.gnome.Terminal.desktop',
     'org.gnome.Nautilus.desktop',
     'org.gnome.TextEditor.desktop',
     'firefox.desktop'
