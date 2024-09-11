@@ -131,3 +131,10 @@ set_ext_dconf "textalign" "0"
 set_ext_dconf "togglebool" "false"
 set_ext_dconf "wpos" "0"
 set_ext_dconf "wposext" "1"
+
+# Transparent top bar namespace is a bit different:
+
+extension_uuid="transparent-top-bar@ftpix.com"
+namespace="com.ftpix.transparentbar"
+
+set_ext_dconf "transparency" "0"
