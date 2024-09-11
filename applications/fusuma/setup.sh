@@ -13,4 +13,7 @@ sudo gem install fusuma --no-user-install
 sudo gem install fusuma-plugin-sendkey --no-user-install
 
 sudo gpasswd -a $USER input
-newgrp input
+
+echo "=========================================================="
+echo "                     Kindly reboot                        "
+echo "=========================================================="
