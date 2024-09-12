@@ -81,6 +81,7 @@ set_shortcut -n "Firefox private" -c "firefox --private-window" -b "<Alt><Super>
 set_shortcut -n "Firefox /e/" -c "firefox -p /e/" -b "<Super><Shift>f"
 set_shortcut -n "Fullscreen screenshot" -c "fixflameshot full -p /home/${USER}/Pictures -c" -b "<Alt><Shift>s"
 set_shortcut -n "Partial screenshot" -c "fixflameshot gui -p /home/${USER}/Pictures -c" -b "<Super><Shift>s"
+set_shortcut -n "Kill gradle" -c "pkill -f '.*GradleDaemon.*'" -b "<Alt><Shift>g"
 
 if [[ -n "$(gsettings get org.gnome.settings-daemon.plugins.media-keys terminal 2> /dev/null)" ]]; then
   namespace="org.gnome.settings-daemon.plugins.media-keys"
