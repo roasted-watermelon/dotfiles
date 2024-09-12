@@ -115,7 +115,7 @@ set_ext_dconf "hpadding" "4"
 extension_uuid="lilypad@shendrew.github.io"
 namespace="org.gnome.shell.extensions.lilypad"
 
-set_ext_dconf "lilypad-order" "['Clipboard_History_Indicator', 'emoji_copy']"
+set_ext_dconf "lilypad-order" "['quick_settings_audio_panel', 'Clipboard_History_Indicator', 'emoji_copy']"
 
 extension_uuid="netspeedsimplified@prateekmedia.extension"
 namespace="org.gnome.shell.extensions.netspeedsimplified"
@@ -135,6 +135,21 @@ set_ext_dconf "textalign" "0"
 set_ext_dconf "togglebool" "false"
 set_ext_dconf "wpos" "0"
 set_ext_dconf "wposext" "1"
+
+extension_uuid="quick-settings-audio-panel@rayzeq.github.io"
+namespace="org.gnome.shell.extensions.quick-settings-audio-panel"
+
+set_ext_dconf "always-show-input-slider" "false"
+set_ext_dconf "create-balance-slider" "false"
+set_ext_dconf "create-mixer-sliders" "true"
+set_ext_dconf "create-sink-mixer" "true"
+set_ext_dconf "media-control" "'move'"
+set_ext_dconf "merge-panel" "false"
+set_ext_dconf "move-master-volume" "false"
+set_ext_dconf "panel-position" "'top'"
+set_ext_dconf "remove-output-slider" "false"
+set_ext_dconf "separate-indicator" "true"
+set_ext_dconf "show-current-device" "false"
 
 # Transparent top bar namespace is a bit different:
 
