@@ -1,16 +1,6 @@
 # keys: /usr/include/linux/input-event-codes.h
 
-swipe:
+pinch:
   3:
-    begin:
-      command: 'ydotool key 56:1'
-    right:
-      update:
-        command: 'ydotool key 15:1 15:0'
-        interval: 1
-    left:
-      update:
-        command: 'ydotool key 15:1 42:1 15:0 42:0'
-        interval: 1
-    end:
-      command: 'ydotool key 56:0'
+    in:
+      command: 'ydotool key 29:1 17:1 17:0 29:0' # KEY_LEFTCTRL + KEY_KPPLUS
