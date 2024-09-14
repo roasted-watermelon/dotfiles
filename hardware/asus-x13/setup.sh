@@ -37,8 +37,8 @@ fans_default() {
   [[ -z \$is_quiet ]] && notify-send -a \"Fan toggle\" \"Fans default speed\"
 }
 
-max_beginning=\`asusctl fan-curve -g > /tmp/faninfo && sed -n '2p' /tmp/faninfo | awk -F',' '{print \$2}' | grep \":100%\"\`
-zero_ending=\`asusctl fan-curve -g > /tmp/faninfo && sed -n '2p' /tmp/faninfo | awk -F',' '{print \$NF}' | grep \":0%\"\`
+max_beginning=\`asusctl fan-curve -g | grep % > /tmp/faninfo && head -n 1 /tmp/faninfo | awk -F',' '{print \$2}' | grep \":100%\"\`
+zero_ending=\`asusctl fan-curve -g | grep % > /tmp/faninfo && head -n 1 /tmp/faninfo | awk -F',' '{print \$NF}' | grep \":0%\"\`
 
 # If no specific mode is provided by the user
 # Set it to toggle between default and max
