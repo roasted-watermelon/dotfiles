@@ -3,7 +3,12 @@
 source <(cat ../.common/*)
 source .functions.gnome
 
-extension_urls=$(remove_comments gnome_extensions.list)
+extension_list="gnome_extensions.list"
+if [[ -n "$1" ]]; then
+  extension_list="$1"
+fi
+
+extension_urls=$(remove_comments "$extension_list")
 gnome_version="$(get_gnome_version_major)"
 
 list_file=".downloaded_extensions"
