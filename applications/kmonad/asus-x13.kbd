@@ -33,7 +33,7 @@
   fu1 KeyMute
   fu2 KeyKbdIllumDown
   fu3 KeyKbdIllumUp
-  fu5 (cmd-button "su - nightcore -c fan-speed-toggle")
+  fu5 KeyProg4
   fu6 KeyPrint
   fu7 KeyBrightnessDown
   fu8 KeyBrightnessUp
