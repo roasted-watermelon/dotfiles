@@ -33,6 +33,7 @@
   fu1 KeyMute
   fu2 KeyKbdIllumDown
   fu3 KeyKbdIllumUp
+  fu4 KeyProg3
   fu5 KeyProg4
   fu6 KeyPrint
   fu7 KeyBrightnessDown
@@ -43,7 +44,7 @@
 )
 
 (deflayer default
-  esc  @fu1 @fu2 @fu3 f4   @fu5 @fu6 @fu7 @fu8 @fu9 f10  @fu11 @fu12   del
+  esc  @fu1 @fu2 @fu3 @fu4 @fu5 @fu6 @fu7 @fu8 @fu9 f10  @fu11 @fu12   del
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
