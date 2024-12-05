@@ -7,7 +7,7 @@
 )
 
 
-;; keycodes: './src/KMonad/Keyboard/Keycode.hs'
+;; keycodes: 'https://github.com/kmonad/kmonad/blob/master/src/KMonad/Keyboard/Keycode.hs'
 
 
 (defsrc
@@ -22,6 +22,8 @@
   en (layer-toggle easyNav)
   kh KeyHome
   ke KeyEnd
+  kb KeyBack
+  kf KeyForward
   kbt (tap-hold-next-release 400 spc KeyKbdIllumToggle)
 )
 
@@ -38,6 +40,6 @@
   tab  q    w    e    r    t    y    u    i    o    p    @kh  @ke    \
   a    a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft            pgup
-  lctl lmet lalt           spc            ralt rctl               @kh    pgdn    @ke
+  lctl lmet lalt           spc            ralt rctl               @kb    pgdn    @kf
 )
 
