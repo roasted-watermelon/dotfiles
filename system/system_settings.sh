@@ -49,3 +49,13 @@ max_preview_height = 10
 records = true
 "
 fi
+
+# Flatpak settings
+# =====================
+
+# LibreWolf
+flatpak override --device=all io.gitlab.librewolf-community
+
+# Bottles
+# flatpak override --user --filesystem=home com.usebottles.bottles
+# flatpak override --user --filesystem=xdg-data/applications com.usebottles.bottles
