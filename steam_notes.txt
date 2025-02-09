@@ -1,0 +1,15 @@
+For Steam flatpak (use Flatseal):
+
+1. Allow "GPU Acceleration"
+2. Add under "Filesystem" - "xdg-data/applications" (allows creating desktop shortcuts)
+3. (optional) Add under "Filesystem" - steam library location, eg "/mnt/linux_shared/steam_lib"
+4. Add under "Environment" - "STEAM_FORCE_DESKTOPUI_SCALING=3.0"
+5. Install Proton-GE from the software center
+6. Close (Exit from status bar) and reopen steam.
+7. (optional) change steam lib location:
+   Steam (menu bar) -> Settings -> Storage -> 
+   click dropdown -> Add drive -> choose the location (should appear in a dialog)
+8. Use Proton GE (observes to detect dedicated Nvidia GPU)
+   Steam (menu bar) -> Settings -> Compatibility
+   Turn on "Enable Steam Play for all other titles"
+   Select "GE-Proton" in dropdown "Run other titles with"
