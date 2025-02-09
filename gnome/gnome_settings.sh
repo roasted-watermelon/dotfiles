@@ -31,7 +31,7 @@ set_dconf "edge-tiling" false
 namespace="org.gnome.shell"
 
 set_dconf "favorite-apps" "[
-    'org.gnome.Terminal.desktop',
+    'app.devsuite.Ptyxis.desktop',
     'org.gnome.Nautilus.desktop',
     'org.gnome.TextEditor.desktop',
     'firefox.desktop'
@@ -85,12 +85,7 @@ set_shortcut -n "Partial screenshot" -c "fixflameshot gui -p /home/${USER}/Pictu
 set_shortcut -n "Full screenshot PrtScr" -c "fixflameshot full -p /home/${USER}/Pictures -c" -b "Print"
 set_shortcut -n "Kill gradle" -c "pkill -f '.*GradleDaemon.*'" -b "<Super><Shift>g"
 
-if [[ -n "$(gsettings get org.gnome.settings-daemon.plugins.media-keys terminal 2> /dev/null)" ]]; then
-  namespace="org.gnome.settings-daemon.plugins.media-keys"
-  set_dconf "terminal" "['<Super>t']"
-else
-  set_shortcut -n "Terminal" -c "gnome-terminal" -b "<Super>t"
-fi
+set_shortcut -n "Terminal" -c "flatpak run app.devsuite.Ptyxis" -b "<Super>t"
 
 end_setting_shortcuts
 
