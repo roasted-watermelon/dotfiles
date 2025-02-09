@@ -31,7 +31,7 @@ fi
 ext_uuid_without_at="${ext_uuid//@/}"
 ext_file="/tmp/${ext_uuid_without_at}.zip"
 
-wget -q --show-progress "https://extensions.gnome.org/extension-data/${ext_uuid_without_at}.v${required_version}.shell-extension.zip" -O "$ext_file"
+wget -q "https://extensions.gnome.org/extension-data/${ext_uuid_without_at}.v${required_version}.shell-extension.zip" -O "$ext_file"
 
 if [[ ! -f "$ext_file" ]]; then
   echo "DOWNLOAD FAILED: $ext_uuid"
