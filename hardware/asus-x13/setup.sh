@@ -215,6 +215,8 @@ sudo systemctl enable $timer_file_name
 # DO NOT ENABLE the standalone service file, which is being called by the timer.
 #sudo systemctl disable $service_file_name
 
+set_env_var "JAVA_TOOL_OPTIONS" "-Dsun.java2d.uiScale=3"
+
 echo "=========================================================="
 echo "                     Kindly reboot                        "
 echo "=========================================================="
