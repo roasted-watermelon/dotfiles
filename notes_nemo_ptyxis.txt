@@ -1,0 +1,7 @@
+Set nemo as the default file explorer
+
+xdg-mime default nemo.desktop inode/directory
+
+Set ptyxis as the default terminal for nemo
+
+gsettings set org.cinnamon.desktop.default-applications.terminal exec 'flatpak run app.devsuite.Ptyxis --new-window'
