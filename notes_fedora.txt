@@ -1,0 +1,11 @@
+Update grub (it is a bit different compared to arch)
+
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg && sudo dnf reinstall grub2-common -y
+
+Localsend and kdeconnect / GSConnect - https://www.reddit.com/r/NobaraProject/comments/1ioqb38/
+
+1. Install firewall-config - sudo dnf install firewall-config
+2. Open the app, change dropdown to "Permanent"
+3. Under "Services", enable "kdeconnect"
+4. Under "Ports", add 53317 - tcp and udp, 53318 - tcp and udp
+
