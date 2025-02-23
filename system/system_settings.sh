@@ -13,7 +13,7 @@ create_user_file() {
 }
 
 if [[ -n "$(echo $WAYLAND_DISPLAY)" ]]; then
-  create_script "fixflameshot" "env QT_QPA_PLATFORM=wayland flameshot \"\$@\""
+  create_script "fixflameshot" "env QT_AUTO_SCREEN_SCALE_FACTOR=1 QT_QPA_PLATFORM=wayland flameshot \"\$@\""
 else
   create_script "fixflameshot" "flameshot \"\$@\""
 fi
