@@ -81,7 +81,7 @@ extension_uuid="emoji-copy@felipeftn"
 namespace="org.gnome.shell.extensions.emoji-copy"
       
 set_ext_dconf "always-show" "true"
-set_ext_dconf "emoji-keybind" "['<Super>period']"
+set_ext_dconf "emoji-keybind" "['<Super>Period']"
 set_ext_dconf "active-keybind" "true"
 
 extension_uuid="Bluetooth-Battery-Meter@maniacx.github.com"
