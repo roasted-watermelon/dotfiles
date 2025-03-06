@@ -203,11 +203,14 @@ timer_file_name="temp-limit.timer"
 timer_file_location="/etc/systemd/system/$timer_file_name"
 
 write_to_file "$service_file_location" "$service_file_content" append=false use_sudo=true backup_original=false
-sudo chmod +x "$service_file_location"
 write_to_file "$service_at_boot_location" "$service_at_boot_content" append=false use_sudo=true backup_original=false
-sudo chmod +x "$service_at_boot_location"
 write_to_file "$timer_file_location" "$timer_file_content" append=false use_sudo=true backup_original=false
-sudo chmod +x "$timer_file_location"
+
+if [[ -n "$(which restorecon)" ]]; then
+  sudo restorecon -v $service_file_location
+  sudo restorecon -v $service_at_boot_location
+  sudo restorecon -v $timer_file_location
+fi  
 
 sudo systemctl daemon-reload
 sudo systemctl enable $service_at_boot_name
