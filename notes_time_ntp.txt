@@ -1,0 +1,15 @@
+set motherboard time as system time:
+
+timedatectl set-local-rtc 0
+
+set NTP server:
+
+edit - /etc/systemd/timesyncd.conf
+set the following
+
+NTP=time.nist.gov
+FallbackNTP=0.arch.pool.ntp.org 1.arch.pool.ntp.org 2.arch.pool.ntp.org 3.arch.pool.ntp.org
+
+restart NTP:
+
+sudo systemctl restart systemd-timesyncd.service
