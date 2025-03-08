@@ -27,6 +27,7 @@ namespace="org.gnome.mutter"
 
 set_dconf "dynamic-workspaces" false
 set_dconf "edge-tiling" false
+set_dconf "experimental-features" "['scale-monitor-framebuffer', 'xwayland-native-scaling']"
 
 namespace="org.gnome.shell"
 
