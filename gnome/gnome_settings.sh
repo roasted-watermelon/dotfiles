@@ -12,7 +12,7 @@ set_dconf "natural-scroll" false
 namespace="org.gnome.desktop.interface"
 
 set_dconf "color-scheme" "prefer-dark"
-set_dconf "gtk-theme" "Adwaita-dark"
+#set_dconf "gtk-theme" "Adwaita-dark"
 set_dconf "icon-theme" "Papirus-Dark"
 set_dconf "enable-hot-corners" false
 set_dconf "clock-show-seconds" true
