@@ -19,6 +19,8 @@ else
 fi
 
 create_user_file "~/.config/firefoxprofileswitcher/config.json" "{\"browser_binary\": \"/usr/bin/firefox\"}"
+
+mkdir -p "~/.config/flameshot"
 create_user_file "~/.config/flameshot/flameshot.ini" "
 [General]
 disabledTrayIcon=true
@@ -36,6 +38,7 @@ if [[ -n "$(which atuin 2>/dev/null)" ]]; then
   echo '[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh' >> ~/.bashrc
   echo 'eval "$(atuin init bash --disable-up-arrow)"' >> ~/.bashrc
 
+  mkdir -p "~/.config/atuin"
   create_user_file "~/.config/atuin/config.toml" "
 search_mode = \"fuzzy\"
 enter_accept = true
