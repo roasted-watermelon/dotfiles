@@ -2,10 +2,6 @@
 
 source <(cat ../.common/*)
 
-# enable bluetooth
-sudo systemctl enable bluetooth
-sudo systemctl start bluetooth
-
 create_user_file() {
   local file_path="$1"
   local contents="$2"
