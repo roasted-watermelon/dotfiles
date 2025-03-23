@@ -1,0 +1,4 @@
+# clean packages: https://wiki.archlinux.org/title/pacman/Tips_and_tricks#Removing_unused_packages_(orphans)
+
+# sudo pacman -Rns $(pacman -Qtdq)
+# yay -Sc --clean
