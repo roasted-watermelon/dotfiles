@@ -145,6 +145,13 @@ set_ext_dconf "togglebool" "false"
 set_ext_dconf "wpos" "0"
 set_ext_dconf "wposext" "1"
 
+extension_uuid="touchpad-gesture-customization@coooolapps.com"
+namespace="org.gnome.shell.extensions.touchpad-gesture-customization"
+
+set_ext_dconf "allow-minimize-window" "true"
+set_ext_dconf "follow-natural-scroll" "false"
+set_ext_dconf "overview-navigation-states" "CYCLIC"
+
 # extension_uuid="quick-settings-audio-panel@rayzeq.github.io"
 # namespace="org.gnome.shell.extensions.quick-settings-audio-panel"
 # 
