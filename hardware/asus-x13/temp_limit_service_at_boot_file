@@ -1,0 +1,11 @@
+[Unit]
+Description=Limit temp. at boot
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/temp-limit-toggle limited quiet
+RemainAfterExit=false
+
+[Install]
+WantedBy=multi-user.target

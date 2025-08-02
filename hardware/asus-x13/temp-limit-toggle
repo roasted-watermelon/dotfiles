@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+# Arguments: blank (simple toggle), "limited", "not-limited"
+
+user_input="$1"
+is_quiet="$2"
+
+TCTL_LIMIT="65"
+
+temp_state_file=/tmp/temp_state
+
+current_tctl_temp="$(sudo ryzenadj -i | grep tctl-temp | awk '{print $6}')"
+
+if [[ "$current_tctl_temp" == "${TCTL_LIMIT}.000" ]]; then
+  current_state="limited"
+else
+  current_state="not-limited"
+fi
+
+echo "Current state - $current_state, $current_tctl_temp"
+
+new_state=""
+
+if [[ "$user_input" == "maintain" ]]; then
+  last_state="$(cat $temp_state_file)"
+  if [[ -n "$last_state" ]]; then
+    new_state=$last_state
+  else
+    new_state=$current_state
+  fi
+elif [[ -n "$user_input" ]]; then
+  new_state="$user_input"
+elif [[ "$current_state" == "not-limited" ]]; then
+  new_state="limited"
+else
+  new_state="not-limited"
+fi
+
+if [[ "$new_state" == "limited" ]]; then
+  sudo ryzenadj --tctl-temp=${TCTL_LIMIT}
+  echo "TCTL temp limited to ${TCTL_LIMIT}"
+  [[ -z $is_quiet ]] && notify-send -a "Temp. limit toggle" "Limited temperature"
+else
+  sudo ryzenadj --tctl-temp=95
+  echo "TCTL temp limit increased to 95"
+  [[ -z $is_quiet ]] && notify-send -a "Temp. limit toggle" "Temperature limits lifted."
+fi
+
+echo "$new_state" > $temp_state_file
+[[ "$(whoami)" == root ]] && chmod 666 $temp_state_file
+
+log_file=/tmp/temp-toogle-log
+echo "$(date) - $(whoami) - $@" - $new_state >> $log_file
+[[ "$(whoami)" == root ]] && chmod 666 $log_file

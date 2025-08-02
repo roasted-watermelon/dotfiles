@@ -1,0 +1,5 @@
+[Unit]
+Description=Run temp-limit-toggle
+
+[Service]
+ExecStart=/usr/local/bin/temp-limit-toggle maintain quiet

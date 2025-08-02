@@ -1,0 +1,10 @@
+[Unit]
+Description=Run temp-limit-toggle every 15 seconds
+
+[Timer]
+OnBootSec=0
+OnUnitActiveSec=15s
+Unit=temp-limit.service
+
+[Install]
+WantedBy=timers.target
