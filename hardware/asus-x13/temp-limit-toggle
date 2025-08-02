@@ -49,6 +49,6 @@ fi
 echo "$new_state" > $temp_state_file
 [[ "$(whoami)" == root ]] && chmod 666 $temp_state_file
 
-log_file=/tmp/temp-toogle-log
+log_file=/tmp/temp-toggle-log
 echo "$(date) - $(whoami) - $@" - $new_state >> $log_file
 [[ "$(whoami)" == root ]] && chmod 666 $log_file
