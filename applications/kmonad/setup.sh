@@ -3,11 +3,17 @@
 source <(cat ../../.common/*)
 
 if [[ -z "$(which kmonad)" ]]; then
-  download_url=`curl -s https://api.github.com/repos/kmonad/kmonad/releases/latest | grep browser_download_url | awk '{print $2}' | sed 's/"//g'`
+  download_url=`curl -s https://api.github.com/repos/kmonad/kmonad/releases/latest | grep browser_download_url | grep -v exe | awk '{print $2}' | sed 's/"//g'`
+  echo
+  echo "Downloading $download_url"
+  echo
   tmp="/tmp/kmonad"
   wget $download_url -O $tmp
   chmod +x $tmp
   sudo mv $tmp /usr/bin/kmonad
+  if [[ -n "$(which restorecon)" ]]; then
+    sudo restorecon /usr/bin/kmonad
+  fi
 fi
 
 sudo mkdir -p /etc/kmonad
@@ -15,7 +21,7 @@ sudo cp asus-x13.kbd /etc/kmonad/config.kbd
 sudo cp kmonad.service /etc/kmonad/kmonad.service
 
 service="/usr/lib/systemd/system/kmonad.service"
-sudo rm "$service"
+sudo rm -f "$service"
 sudo ln -s /etc/kmonad/kmonad.service "$service"
 
 sudo systemctl enable kmonad.service
