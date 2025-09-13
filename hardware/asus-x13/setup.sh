@@ -36,9 +36,9 @@ sudoers_file="/etc/sudoers.d/asus_x13"
 sudoers_file_tmp=/tmp/asus_x13
 
 echo "${USER} ALL=(root) NOPASSWD: ${ryzenadj_path}" > $sudoers_file_tmp
+sudo chmod 440 $sudoers_file_tmp
+sudo chown root:root $sudoers_file_tmp
 sudo mv $sudoers_file_tmp $sudoers_file
-sudo chmod 440 $sudoers_file
-sudo chown root:root $sudoers_file
 
 # Setup systemd timers
 # Check: sudo systemctl status <name>.timer
